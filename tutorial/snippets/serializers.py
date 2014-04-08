@@ -4,9 +4,12 @@ from snippets.models import Snippet
 
 
 class SnippetSerializer(serializers.ModelSerializer):
+    owner = serializers.Field(source='owner.username')
+
     class Meta(object):
         model = Snippet
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
+        fields = \
+            ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner')
 
 
 class UserSerializer(serializers.ModelSerializer):
